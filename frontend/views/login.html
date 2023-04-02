@@ -1,0 +1,31 @@
+<div class="signupFrm">
+  <form class="form" name="contactForm" ng-submit="submit()" novalidate>
+    <h1 class="title">Log In</h1>
+    <div class="inputContainer">
+      <input
+        type="text"
+        class="input"
+        placeholder="a"
+        ng-model="login.name"
+        ng-required="true"
+        name="name"
+      />
+
+      <label for="" class="label">Username / E-Mail</label>
+    </div>
+
+    <div class="inputContainer">
+      <input
+        type="password"
+        class="input"
+        placeholder="a"
+        ng-model="login.password"
+        ng-required="true"
+        name="password"
+      />
+      <label for="" class="label">Password</label>
+    </div>
+
+    <button type="submit" class="submitBtn" >Log In</button>
+  </form>
+</div>

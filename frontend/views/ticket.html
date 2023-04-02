@@ -1,0 +1,138 @@
+<div class="header">
+  <div class="viewButton">
+    <button
+      class="viewComment"
+      type="button"
+      data-toggle="modal"
+      data-target="#exampleModalCenter"
+      ng-click="viewAllComments()"
+    >
+      View Comments
+    </button>
+  </div>
+
+  <button class="logout" type="button" ng-click="logOut()">Log Out</button>
+</div>
+
+<div>
+  <div class="leftTicketSection">
+    <h4>#{{ticketDetails._id}}</h4>
+    <hr />
+    <h5>Status:</h5>
+    <div><b>{{ticketDetails.ticketStatus}}</b></div>
+    <hr />
+    <h5>Assign To:</h5>
+    <select disabled>
+      <option >{{ ticketDetails.ticketStatus=='Closed'?'': ticketDetails.assignTo.userName}}</option>
+    </select>
+    <hr />
+    <h5>Escalated To:</h5>
+    <select
+      name="agent"
+      ng-model="agent"
+      value="agent"
+      ng-change="assignToEscalatedUser(agent)"
+    >
+      <option ng-repeat="agent in agents" value="{{agent}}">
+        {{agent.firstName}} {{agent.lastName}}
+      </option>
+    </select>
+    <button
+      ng-show="showEscalatedTick"
+      ng-click="saveEscalatedUserStatus(ticketDetails)"
+      class="tickMark"
+    >
+      <i class="fa-solid fa-check"></i>
+    </button>
+    <hr />
+    <h5>Resolved By:</h5>
+    <select
+      name="resolvedAgent"
+      ng-model="resolvedAgent"
+      value="resolvedAgent"
+      ng-change="assignToResolvedUser(resolvedAgent)"
+    >
+      <option ng-repeat="agent in agents" value="{{agent}}">
+        {{agent.firstName}} {{agent.lastName}}
+      </option>
+    </select>
+    <button
+      ng-show="showResolvedTick"
+      ng-click="saveResolvedUserStatus(ticketDetails)"
+      class="tickMark"
+    >
+      <i class="fa-solid fa-check"></i>
+    </button>
+
+    <div class="ticketClose">
+      <button class="closeTicket" ng-click="closeTicket(ticketDetails)">
+        Close Ticket
+      </button>
+    </div>
+  </div>
+
+  <div class="vertical"></div>
+  <div class="rightTicketSection">
+    <i
+      class="fa-solid fa-comments"
+      style="
+        color: #00b5b7;
+        margin-top: 5px;
+        font-size: 1.3rem;
+        margin-right: 10px;
+      "
+    ></i>
+    <div class="commentBox">
+      <h3>Add Your Comment</h3>
+      <section class="commentInput">
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          class="ticketText"
+          ng-model="comment.commentText"
+        ></textarea>
+      </section>
+
+      <div class="buttonComment" ng-click="addComment(ticketDetails)">
+        <button class="commentButton">Add a Comment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">All Comments</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body scrollModal">
+        <div class="talk-bubble" ng-repeat="comments in commentss">
+          <div class="talktext" >
+            <p>
+              {{comments.commentText}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

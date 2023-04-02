@@ -1,0 +1,593 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+/* Get rid of all default margins/paddings. */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/*   Login Form   */
+
+.signupFrm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: white;
+  width: 400px;
+  border-radius: 8px;
+  padding: 20px 40px;
+  box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 90%;
+  margin-bottom: 17px;
+}
+
+.input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #dadce0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 0 20px;
+  outline: none;
+  background: none;
+  z-index: 1;
+}
+
+.label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 0 4px;
+  background-color: white;
+  color: #dadce0;
+  font-size: 16px;
+  transition: 0.5s;
+  z-index: 0;
+}
+
+.submitBtn {
+  display: block;
+  margin-left: auto;
+  padding: 15px 30px;
+  border: none;
+  background-color: #00b5b7;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.submitBtn:hover {
+  background-color: #1c8687;
+  transform: translateY(-2px);
+}
+
+.input:focus + .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c8687;
+}
+
+.input:focus {
+  border: 2px solid #00b5b7;
+}
+.input:not(:placeholder-shown) + .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Hide the placeholder texts (a) */
+
+::placeholder {
+  color: transparent;
+}
+
+header {
+  background: #00b5b7;
+  color: black;
+}
+
+.signInBtn {
+  padding: 5px 18px;
+  border: none;
+  background-color: #1c8687;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.signInBtn:hover {
+  background-color: #00b5b7;
+}
+
+.link {
+  color: #222;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* .container {
+  padding: 2px 16px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 150px;
+  display: grid;
+} */
+
+/*                                      Super Admin Dashboard                               */
+
+/**            NavBar             **/
+
+.header {
+  background-color: #00b5b7;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header h1 {
+  margin: 0;
+  padding: 15px;
+}
+
+.navbar-right {
+  display: inline-flex;
+  align-items: center;
+  float: right;
+}
+
+.navbar-right h2 {
+  font-size: 25px;
+  padding: 20px;
+  margin-top: 4px;
+}
+
+.header .addBrand {
+  margin-right: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  padding: 20px;
+  height: 100%;
+  margin-top: 7px;
+}
+
+.header .logout {
+  margin-right: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: black;
+  color: white;
+  padding: 20px;
+  height: 100%;
+  margin-top: 7px;
+  margin-left: 14px;
+}
+
+.header .addBrand:hover {
+  background: #def2fb;
+  color: black;
+}
+
+/*             Brand Card              */
+
+.spacingCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: 126px;
+}
+
+.brandCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  min-width: 360px;
+  display: inline-block;
+  padding: 30px;
+  margin: 35px;
+}
+
+.brandCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: scale(1.07);
+  animation: 0.3s;
+  background-color: #00b5b7;
+  color: white;
+}
+
+.brandContainer {
+  padding: 20px 16px;
+}
+
+.brandHeading {
+  font-size: 35px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+
+.brandContainer .editicon {
+  background-color: green;
+}
+
+.brandContainer .deleteicon {
+  /* margin-left: 200px; */
+  position: relative;
+  left: 139px;
+  background-color: red;
+}
+
+.spacingCards {
+  /* padding: 60px;
+  padding-top: 0; */
+  display: flex;
+  
+}
+
+.brandCard img {
+  width: 100px;
+  height: 70px;
+  margin-left: 92px;
+}
+
+/*             Agent Card              */
+
+.agentCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 30px;
+  margin: 35px;
+  /* border: 2px solid blue; */
+}
+
+.agentCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  /* cursor: pointer; */
+}
+
+.agentContainer {
+  padding: 20px 16px;
+}
+
+.agentCard img {
+  width: 100px;
+  height: 70px;
+  margin-left: 74px;
+}
+
+.agentSection {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 600px;
+  margin-right: 50px;
+  margin-top: 50px;
+  float: right;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* border: 2px solid red; */
+  overflow: scroll;
+}
+
+.agentHeading {
+  padding: 15px;
+  font-size: 35px;
+  font-weight: 500;
+  margin-left: 80px;
+}
+
+/*             Ticket Card              */
+
+.ticketCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 30px;
+  margin: 35px;
+  /* border: 2px solid blue; */
+}
+
+.ticketCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0.8, 0.8, 0.8, 0.8);
+  /* cursor: pointer; */
+  transform: scale(1.06);
+}
+
+.ticketContainer {
+  padding: 20px 16px;
+}
+
+.ticketSection {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  height: 600px;
+  margin-left: 50px;
+  margin-top: 50px;
+  float: left;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* border: 2px solid red; */
+  overflow: scroll;
+}
+
+.ticketHeading {
+  padding: 15px;
+  font-size: 35px;
+  font-weight: 500;
+  margin-left: 410px;
+}
+
+.ticketLeft {
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.ticketRight {
+  float: right;
+}
+
+.vertical {
+  border-left: 2px solid black;
+  height: 100%;
+  position: absolute;
+  left: 25%;
+}
+
+.ticketButton {
+  background-color: #00b5b7;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 18px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/*           Ticket Page          */
+
+.leftTicketSection {
+  float: left;
+  padding: 20px;
+}
+
+.rightTicketSection {
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+}
+
+.tickMark {
+  background-color: greenyellow;
+}
+
+.tickMark:hover {
+  cursor: pointer;
+}
+
+/*          Comment Section           */
+
+.commentBox {
+  margin-left: 10px;
+}
+
+.commentInput {
+  margin-top: 30px;
+  margin-left: -379px;
+}
+
+.ticketText {
+  width: 160%;
+  height: 330px;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.commentButton {
+  border-radius: 11px;
+  margin-left: -379px;
+  padding: 12px;
+  background-color: #00b5b7;
+  color: white;
+  font-weight: 500;
+}
+
+.commentButton:hover {
+  background-color: lightblue;
+}
+
+.buttonComment {
+  padding-top: 20px;
+}
+
+.ticketClose {
+  margin-top: 150px;
+  margin-left: 17px;
+}
+
+.closeTicket {
+  padding: 30px;
+  width: 298px;
+  border-radius: 24px;
+  background-color: red;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.attachment {
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.viewButton {
+  margin-top: 10px;
+}
+
+.viewComment {
+  height: 60px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.talk-bubble {
+  margin: 40px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: #00b5b7;
+  color: white;
+}
+
+.talktext {
+  padding: 1em;
+  text-align: left;
+  line-height: 1.5em;
+}
+.talktext p {
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+.scrollModal {
+  overflow: scroll;
+  height: 500px;
+}
+
+/*  Agent Dashboard     */
+
+.agentHeader {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.agentTicketSection {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 40px;
+  width: 81%;
+  margin-left: 150px;
+  margin-top: 36px;
+  height: 515px;
+  overflow: scroll;
+  padding: 33px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agentTicketCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 222px;
+  width: 1157px;
+  padding: 20px;
+  display: flex;
+  gap: 26px;
+  flex-direction: column;
+  
+}
+
+.agentTicketCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0.8, 0.8, 0.8, 0.8);
+  /* cursor: pointer; */
+  transform: scale(1.03);
+  transition: 0.5s;
+}
+
+.agentTicketLeft {
+  /* float: left; */
+  padding: 12px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  font-size: 24px;
+  width: 30%;
+  /* display: flex; */
+  /* border: 2px solid green; */
+}
+
+.agentTicketRight {
+  /* float: right; */
+  padding: 12px;
+  font-weight: 500;
+  /* display: flex; */
+  width: 70%;
+  /* border: 2px solid black; */
+}
+
+.agentTicketIcons{
+  display: flex;
+  gap: 20px;
+}
+
+.agentTickMark{
+  border-radius: 10px;
+  padding: 20px;
+  background-color: greenyellow;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.agentDecline{
+  border-radius: 10px;
+  padding: 20px;
+  background-color: red;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.statusTick{
+  background-color: greenyellow;
+  border-radius: 6px;
+  height: 25px;
+  margin-left: 6px;
+  font-size: 15px;
+}

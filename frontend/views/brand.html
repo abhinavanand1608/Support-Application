@@ -1,0 +1,265 @@
+<div class="header">
+  <button
+    class="addBrand btn btn-primary"
+    type="button"
+    data-toggle="modal"
+    data-target="#createTickets"
+  >
+    Create Tickets
+  </button>
+  <button
+    class="addBrand btn btn-primary"
+    type="button"
+    data-toggle="modal"
+    data-target="#staticBackdrop"
+  >
+    Add Agents
+  </button>
+  <div class="navbar-right" ng-model="userLoggedInId">
+    <h2>Hello {{userLoggedInId.nameOfUser}}</h2>
+    <i class="fa-solid fa-user"></i>
+  </div>
+  <button class="logout" type="button" ng-click="logOut()">Log Out</button>
+</div>
+
+<div class="ticketSection">
+  <div class="ticketHeading">All Tickets</div>
+  <div class="ticketCard" ng-repeat="ticket in tickets">
+    <!-- <a style="color: black; text-decoration: none;" ui-sref="ticket"> -->
+    <div class="ticketContainer">
+      <div class="ticketLeft">
+        <h4>#{{ticket._id}}</h4>
+        <p><b>{{ticket.ticketStatus}}</b></p>
+        <label for="" ">Assigned To: </label>
+
+        <select
+          name="agent"
+          ng-model="agent"
+          value="agent"
+          ng-change="assignToUser(agent)"
+        >
+          <!-- <option></option> -->
+          <option ng-repeat="agent in agents" value="{{agent}}">
+            {{agent.firstName}} {{agent.lastName}}
+          </option>
+        </select>
+        <button
+          ng-show="showTick"
+          ng-click="saveUserStatus(ticket, agents)"
+          class="tickMark"
+        >
+          <i class="fa-solid fa-check"></i>
+        </button>
+        <div>Reported By: <b>{{ticket.customerName}}</b></div>
+        <button class="ticketButton" ng-click="viewTicketInfo(ticket)">
+          Click to view
+        </button>
+      </div>
+
+      <span>{{ticket.ticketDescription}}</span>
+      <!-- <div class="ticketSectionLeft">
+        <div class="ticketRight">
+          <h3>Ticket Description</h3>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="agentSection">
+  <div class="agentHeading">All Agents</div>
+  <div class="agentCard" ng-repeat="agent in agents">
+    <img src="/frontend/images/user.jpg" alt="Avatar" />
+    <div class="agentContainer">
+      <h4>{{agent.firstName}} {{agent.lastName}}</h4>
+      <p>Agent Email :- {{agent.email}}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Agents Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add an Agent</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="brandForm" ng-submit="addAgentDetails()" novalidate>
+          <label for="">First Name</label>
+          <input
+            type="text"
+            placeholder="Agent Name"
+            ng-model="addAgent.firstName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Last Name</label>
+          <input
+            type="text"
+            placeholder="Agent Name"
+            ng-model="addAgent.lastName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">User Name</label>
+          <input
+            type="text"
+            placeholder="Agent Name"
+            ng-model="addAgent.userName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Agent Email</label>
+          <input
+            type="email"
+            placeholder="Agent Email"
+            ng-model="addAgent.email"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Agent Phone No</label>
+          <input
+            type="Number"
+            placeholder="Agent Name"
+            ng-model="addAgent.phone"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Agent Password</label>
+          <input
+            type="password"
+            placeholder="Agent Password"
+            ng-model="addAgent.password"
+            ng-required="true"
+          />
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ticket Modal -->
+<div
+  class="modal fade hidden"
+  id="createTickets"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="staticBackdropLabel">Add a Ticket</h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="brandForm" ng-submit="addTicket()" novalidate>
+          <h5>Ticket Details</h5>
+          <label for="">Ticket Subject</label>
+          <input
+            type="text"
+            placeholder="Ticket Subject"
+            ng-model="ticketSubject"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Ticket Status: </label>
+          <span style="color: green; font-weight: 500">Open</span>
+          <br />
+          <label for="">Ticket Source</label>
+          <select name="ticketSource" ng-model="ticketSource">
+            <option></option>
+            <option value="Manual">Manual</option>
+            <option value="Call">Call</option>
+          </select>
+          <br />
+          <label for="">Ticket Type</label>
+          <select name="ticketSource" ng-model="ticketType" ng-required="true">
+            <option></option>
+            <option value="Bug">Bug</option>
+            <option value="Query">Query</option>
+          </select>
+          <br />
+          <label for="">Ticket Description</label>
+          <textarea
+            type="text"
+            placeholder="Ticket Description"
+            ng-model="ticketDescription"
+            ng-required="true"
+          >
+          </textarea>
+          <hr style="border-top: 2px solid black" />
+          <h5>Customer Details</h5>
+          <label for="">Customer Name</label>
+          <input
+            type="text"
+            placeholder="Customer Name"
+            ng-model="customerName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Customer Contact Details (if any)</label>
+          <input
+            type="text"
+            placeholder="Customer Details"
+            ng-model="customerDetails"
+          />
+          <br />
+          <label for="">Attachments</label>
+          <input
+            type="file"
+            placeholder="Customer Attachments"
+            file-model="imageUpload"
+          />
+          <br />
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

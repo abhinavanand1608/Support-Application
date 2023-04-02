@@ -1,0 +1,216 @@
+<div class="header">
+  <button
+    class="addBrand btn btn-primary"
+    type="button"
+    data-toggle="modal"
+    data-target="#staticBackdrop"
+  >
+    Add Brands
+  </button>
+  <div class="navbar-right" ng-model="type">
+    <h2>Hello {{type.typeOfUser}}</h2>
+    <i class="fa-solid fa-user"></i>
+  </div>
+  <button class="logout" type="button" ng-click="logOut()">Log Out</button>
+</div>
+
+<div class="brandHeading">All Brands</div>
+
+<div class="spacingCards">
+  <div class="brandCard" ng-repeat="brand in brands" ng-if="!brand.isDeleted">
+    <!-- <img src="/frontend/images/posist.jpg" alt="Avatar" /> -->
+    <div class="brandContainer" >
+      <h4>{{brand.name}} Brand</h4>
+      <hr>
+      <p>BrandAdmin Name :- {{brand.userName}}</p>
+      <p>Brand Email :- {{brand.email}}</p>
+      <button
+        type="button"
+        class="btn btn-primary editicon"
+        data-toggle="modal"
+        data-target="#editModal"
+      >
+        Edit
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary deleteicon"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+        ng-click="deleteBrand(brand)"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add a Brand</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="brandForm" ng-submit="addBrandDetails()" novalidate>
+          <label for="">First Name</label>
+          <input
+            type="text"
+            placeholder="First Name"
+            ng-model="addBrand.firstName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Last Name</label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            ng-model="addBrand.lastName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Brand Name</label>
+          <input
+            type="text"
+            placeholder="Brand Name"
+            ng-model="addBrand.brandName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Founder's Email</label>
+          <input
+            type="email"
+            placeholder="Brand Email"
+            ng-model="addBrand.email"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Founder's Password</label>
+          <input
+            type="password"
+            placeholder="Brand Password"
+            ng-model="addBrand.password"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Brand Username</label>
+          <input
+            type="text"
+            placeholder="Brand Username"
+            ng-model="addBrand.userName"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Brand Phone</label>
+          <input
+            type="number"
+            placeholder="Brand Phone"
+            ng-model="addBrand.phone"
+            ng-required="true"
+          />
+          <br />
+          <label for="">Attach a picture</label>
+          <input
+            type="file"
+            placeholder="Attach Picture"
+            file-model="imageUpload"
+          />
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<!-- <div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Brand</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" >Delete</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Brand</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
